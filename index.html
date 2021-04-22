@@ -6,9 +6,9 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<style type="text/css">
 		body{margin:0;font-family: 'Apple SD Gothic Neo','Malgun Gothic',arial,sans-serif;}
-		.section1{width: 1600px; height: 450px; border: solid black 0.5px; display:flex; margin: 0px auto;}
+		.section1{width: 1600px; height: 450px; border: solid black 0.5px; display:flex; margin: 0px auto; animation:moving 10s infinite linear;}
 		.section2{width: 100%; height: 1000px; margin-top: 500px;background-color: white;position: sticky; top: 300px; z-index: -3;}
-		.section3{width: 100%; height: 2000px; background-position: center;background-size: cover; background-attachment: fixed; z-index: -2}
+		.section3{width: 100%; height: 2000px; background-position: center;background-size: cover; background-attachment: fixed; z-index: -2; position: relative;}
 		#back1{background-image: url(https://media.giphy.com/media/juTxjjZW0HCWQ/giphy.gif)}
 		#back2{background-image: url(https://media.giphy.com/media/L3oBL5FcCw2aRgvYLb/giphy.gif);}
 		#back3{background-image: url(https://media.giphy.com/media/f9ACGJH20fyejQmst8/giphy.gif);}
@@ -20,8 +20,11 @@
 		.product_n{}
 		.product_dis{}
 		header{height: 300px; width: 100%;}
-		h1{width: 100%;text-align: center;font-size: 10em;  position: fixed;top: 10px; z-index: -1;line-height: 0;}
+		h1{width: 100%;text-align: center;font-size: 10em;  position: fixed;top: 10px; z-index: -5;line-height: 0;}
 		img{width: 100%;}
+		.footer{text-align: center; color: white; font-size: 3em; font-weight: bold; margin: 0;position: absolute;bottom: 5px;    left: 50%; transform: translateX(-50%);}
+		@keyframes moving {to{left: -10000px;}}
+
 	</style>
 </head>
 <body>
@@ -150,7 +153,9 @@
 	</section>
 	<section class="section3" id="back1"></section>
 	<section class="section3" id="back2"></section>
-	<section class="section3" id="back3"></section>
+	<section class="section3" id="back3">
+		<p class="footer">sleepWELL</p>
+	</section>
 	<script>
 		$(".hov-anim").mouseover(function() {
   $(this).attr("src", $(this).data("animated"))
