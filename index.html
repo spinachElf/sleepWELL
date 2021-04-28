@@ -4,166 +4,690 @@
 	<title></title>
 	<meta charset="utf-8">
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com"> 
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;700&display=swap" rel="stylesheet">
 	<style type="text/css">
-		body{margin:0;font-family: 'Apple SD Gothic Neo','Malgun Gothic',arial,sans-serif;}
-		.section1{width: 1600px; height: 450px; border: solid black 0.5px; display:flex; margin: 0px auto; animation:moving 10s infinite linear;}
-		.section2{width: 100%; height: 1000px; margin-top: 500px;background-color: white;position: sticky; top: 300px; z-index: -3;}
-		.section3{width: 100%; height: 2000px; background-position: center;background-size: cover; background-attachment: fixed; z-index: -2; position: relative;}
+		body{margin:0;font-family: 'Apple SD Gothic Neo','Noto Sans KR',sans-serif,'Malgun Gothic',arial,sans-serif;}
+		.section0{
+			width: 100%; overflow: hidden;
+		}
+		.section1{
+			width: calc(400px * 8); 
+			height: 450px; 
+			border: solid black 0.5px; 
+			box-sizing: border-box;
+			display:flex; 
+			position: relative;
+			margin: 0px auto; 
+			overflow: hidden;
+			-webkit-animation:moving 10s infinite linear;
+			}
+
+		.section1:hover{
+			animation-play-state: paused;
+		}
+		.section2{width: 100%; height: 1500px; margin-top: 500px;background-color: white;position: sticky; top: 300px; z-index: -3;}
+		.section3{width: 100%; height: 100vh; background-position: center;background-size: cover; background-attachment: fixed; z-index: -2; position: relative;}
 		#back1{background-image: url(https://media.giphy.com/media/juTxjjZW0HCWQ/giphy.gif)}
 		#back2{background-image: url(https://media.giphy.com/media/L3oBL5FcCw2aRgvYLb/giphy.gif);}
 		#back3{background-image: url(https://media.giphy.com/media/f9ACGJH20fyejQmst8/giphy.gif);}
 		.box{width: 400px; height: 100%; border: solid black 0.5px; box-sizing: border-box; background-color: white; cursor: pointer;}
 		.item{width: 100%; height: 400px; border: solid black 0.5px;box-sizing: border-box; background-color: #E6E6E6;}
 		.name{width: 100%; height: 50px; border: solid black 0.5px;box-sizing: border-box; display: inline-flex; justify-content: space-between; align-items: center;}
-		.intro_p{width: 100%;text-align: center; font-size: 3em; padding-top:100px;}
-		p{margin: 5px; text-align: center; }
+		.section1 p{margin: 5px; text-align: center; }
+		.intro{
+			padding-top: -50px;
+			font-size: 2em;
+			width: 90%; 
+			line-height: 140%;
+			word-break: keep-all;
+			letter-spacing: -0.2px;
+			margin:auto;
+			text-align: left;}
+		.intro_p{font-weight: bold;}
 		.product_n{}
 		.product_dis{}
 		header{height: 300px; width: 100%;}
 		h1{width: 100%;text-align: center;font-size: 10em;  position: fixed;top: 10px; z-index: -5;line-height: 0;}
 		img{width: 100%;}
-		.footer{text-align: center; color: white; font-size: 3em; font-weight: bold; margin: 0;position: absolute;bottom: 5px;    left: 50%; transform: translateX(-50%);}
-		@keyframes moving {to{left: -10000px;}}
+		.footer_bg{width: 100%; height: 800px;
+			background:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.5));
+			position: absolute;
+			bottom: 0;
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-end;}
+		.footer1{
+			color: white;
+			font-size: 1em;
+			width: 200px;}
+		.footer2{
+			color: white; 
+			font-size: 3em; 
+			font-weight: bold; }
+		.foot_l{text-align: left;}
+		.foot_r{text-align: right;}
+		.modal{
+			display: none;
+			position: fixed;
+			z-index: 5;
+			width: 100%; height: 100%;
+			background-color: rgb(0,0,0);
+			background-color: rgba(0,0,0,0.4);}
+		.modal-content{
+			background-color: white;
+			width: 70vw; height: 80vh;
+			margin: auto;
+			margin-top: 130px;
+			border: 0.5px solid black;
+			text-align: center;
+			overflow: scroll;}
+		.modal img{
+			width: 100%;
+			z-index: 2;}
+		.modal p{
+			width: 80%;
+			margin: auto;
+			margin-bottom: 50px;
+			font-size: 2em;
+			letter-spacing: -0.3px;
+			word-break: keep-all;
+			text-align: left;
+			line-height: 145%;
+		}
+		.close{
+			position: fixed;
+			color: black;
+			font-size: 5em;
+			padding-left: 10px;
+			z-index: 10;}
+		.close:hover{
+			cursor: pointer;}
+		h2{font-size: 3em;
+			margin-top: -20px;}
+		@-webkit-keyframes moving {
+			0% {transform: translateX(0);}
+			100% {transform: translateX(calc(-400px * 4));}
+			}
 
 	</style>
 </head>
 <body>
-	<header>
-		<h1>sleepWELL</h1>
-	</header>
+	<div class="modal">
+		<div class="modal-content">
+		<span class="close">&times;</span>
+		<img src="a_i1.gif">
+		<h2>꿈_0218 (행성)</h2>
+		<p>건곤대학교 인간경제대학원 연구소에서 제작, 보급한 인류 최초의 보급형 자각몽입니다. 우주와 행성을 여행하는 테마로 제작되어, 지금까지 많은 사람들의 사랑을 받고 있습니다.<br><br>
+		수면 중 노동 효율 최대 34% 증가.<br><br>
+
+		당신은 행성을 거닐고 있습니다. 공기 중 질소의 향을 느껴보세요. 황홀한 흙의 촉감을 느껴보세요. 잔잔히 부서지는 손 안의 모래알을 한 알 한 알 훑으며 드넓은 평야를 만끽하세요. 이름을 알 수 없는 드넓은 평야의 지평선 너머에는 조용한 우주가 펼쳐집니다. 우주를 바라보세요. 별을 바라보세요. 떠오르는 몸을 느껴보세요.
+		</p>
+		</div>
+	</div>
+	<div class="modal">
+		<div class="modal-content">
+		<span class="close">&times;</span>
+		<img src="a_i2.gif">
+		<h2>꿈_#[*& (고래)</h2>
+		<p>한국미래포럼의 최초의 자각몽입니다. 바다를 가로지르는 고래가 되어, 극한의 자유를 느낄 수 있습니다.<br><br>
+		수면 중 노동 효율 최대 25% 증가.<br><br>
+
+		푸른 빛이 잘게 부서져 쏟아집니다. 입을 크게 벌려 짠맛을 한움큼 느끼면 기대하지 않은 따스한 맛을 함께 느낍니다. 지느러미가 된 손을 크게 휘저어 파도를 만들어보세요. 검은 하늘 아래 반짝이는 푸른 빛의 오묘한 조화를 느껴보세요. 바다인지 하늘인지 모를 자유의 공간을 유영하며 온전히 스스로에게 집중하는 시간을 가져보세요.
+		</p>
+		</div>
+	</div>
+	<div class="modal">
+		<div class="modal-content">
+		<span class="close">&times;</span>
+		<img src="a_i3.gif">
+		<h2>꿈_7777 (금전)</h2>
+		<p>알려지지 않은 익명의 시민이 제작해, 바이러스처럼 퍼져갔던 꿈_LLLL을 LDfY에서 채취, 개량해 여러분께 선보입니다. LDfY의 최고참과 최연소 사원이 협업한 반짝이는 꿈입니다.<br><br>
+		수면 중 노동 효율 최대 70% 증가.<br><br>
+
+		여느 날과 다름 없어 보입니다. 푸르고 검은 하늘에서 빛나는 별들을 바라봅니다. 당신은 서서히 그것이 밝아진다고 느낍니다. 정확히는, 별들이 당신에게 다가오고 있다고 느낍니다. 형언할 수 없이 아름다운 빛이 점점 당신을 향해 다가옵니다. 무수한 별들로 둘러싸여갑니다. 별, 별, 무슨 별, 쟁반같이 둥근 별.
+		</p>
+		</div>
+	</div>
+	<div class="modal">
+		<div class="modal-content">
+		<span class="close">&times;</span>
+		<img src="a_i4.gif">
+		<h2>꿈_sakr (꽃놀이)</h2>
+		<p>최고의 꿈 제작소, DG 꿈 백화점에서 제작한 최고급 자각몽입니다. 화려한 꽃송이는 당신이 원하는 그 무엇으로든 변해 당신에게 다가갑니다. 즐거울 뿐만 아니라, 매우 효과적입니다.<br><br>
+		수면 중 노동 효율 최대 97% 증가.<br><br>
+
+		수십 년 전 사라졌던 꽃들이 하늘에 흩날립니다. 벚꽃, 매화, 동백, 철쭉, 진달래라 불리었던 붉은 생명력이 끊임 없이 흩날립니다. 머리 위에, 옷 위에, 입 안에, 눈 안에. 꽃과 다름 없어진 당신은 무엇이든 해낼 수 있을 것만 같습니다. 돌아오지 않을 다른 색상의 생명들을 불러내는 것조차 할 수 있을 것만 같습니다. 또는 완전히 이 세상에서 사라지게 할 수도 있겠지요.
+		</p>
+		</div>
+	</div>		
+	 <!-- copy same items -->
+	<div class="modal">
+		<div class="modal-content">
+		<span class="close">&times;</span>
+		<img src="a_i1.gif">
+		<h2>꿈_0218 (행성)</h2>
+		<p>건곤대학교 인간경제대학원 연구소에서 제작, 보급한 인류 최초의 보급형 자각몽입니다. 우주와 행성을 여행하는 테마로 제작되어, 지금까지 많은 사람들의 사랑을 받고 있습니다.<br><br>
+		수면 중 노동 효율 최대 34% 증가.<br><br>
+
+		당신은 행성을 거닐고 있습니다. 공기 중 질소의 향을 느껴보세요. 황홀한 흙의 촉감을 느껴보세요. 잔잔히 부서지는 손 안의 모래알을 한 알 한 알 훑으며 드넓은 평야를 만끽하세요. 이름을 알 수 없는 드넓은 평야의 지평선 너머에는 조용한 우주가 펼쳐집니다. 우주를 바라보세요. 별을 바라보세요. 떠오르는 몸을 느껴보세요.
+		</p>
+		</div>
+	</div>
+	<div class="modal">
+		<div class="modal-content">
+		<span class="close">&times;</span>
+		<img src="a_i2.gif">
+		<h2>꿈_#[*& (고래)</h2>
+		<p>한국미래포럼의 최초의 자각몽입니다. 바다를 가로지르는 고래가 되어, 극한의 자유를 느낄 수 있습니다.<br><br>
+		수면 중 노동 효율 최대 25% 증가.<br><br>
+
+		푸른 빛이 잘게 부서져 쏟아집니다. 입을 크게 벌려 짠맛을 한움큼 느끼면 기대하지 않은 따스한 맛을 함께 느낍니다. 지느러미가 된 손을 크게 휘저어 파도를 만들어보세요. 검은 하늘 아래 반짝이는 푸른 빛의 오묘한 조화를 느껴보세요. 바다인지 하늘인지 모를 자유의 공간을 유영하며 온전히 스스로에게 집중하는 시간을 가져보세요.
+		</p>
+		</div>
+	</div>
+	<div class="modal">
+		<div class="modal-content">
+		<span class="close">&times;</span>
+		<img src="a_i3.gif">
+		<h2>꿈_7777 (금전)</h2>
+		<p>알려지지 않은 익명의 시민이 제작해, 바이러스처럼 퍼져갔던 꿈_LLLL을 LDfY에서 채취, 개량해 여러분께 선보입니다. LDfY의 최고참과 최연소 사원이 협업한 반짝이는 꿈입니다.<br><br>
+		수면 중 노동 효율 최대 70% 증가.<br><br>
+
+		여느 날과 다름 없어 보입니다. 푸르고 검은 하늘에서 빛나는 별들을 바라봅니다. 당신은 서서히 그것이 밝아진다고 느낍니다. 정확히는, 별들이 당신에게 다가오고 있다고 느낍니다. 형언할 수 없이 아름다운 빛이 점점 당신을 향해 다가옵니다. 무수한 별들로 둘러싸여갑니다. 별, 별, 무슨 별, 쟁반같이 둥근 별.
+		</p>
+		</div>
+	</div>
+	<div class="modal">
+		<div class="modal-content">
+		<span class="close">&times;</span>
+		<img src="a_i4.gif">
+		<h2>꿈_sakr (꽃놀이)</h2>
+		<p>최고의 꿈 제작소, DG 꿈 백화점에서 제작한 최고급 자각몽입니다. 화려한 꽃송이는 당신이 원하는 그 무엇으로든 변해 당신에게 다가갑니다. 즐거울 뿐만 아니라, 매우 효과적입니다.<br><br>
+		수면 중 노동 효율 최대 97% 증가.<br><br>
+
+		수십 년 전 사라졌던 꽃들이 하늘에 흩날립니다. 벚꽃, 매화, 동백, 철쭉, 진달래라 불리었던 붉은 생명력이 끊임 없이 흩날립니다. 머리 위에, 옷 위에, 입 안에, 눈 안에. 꽃과 다름 없어진 당신은 무엇이든 해낼 수 있을 것만 같습니다. 돌아오지 않을 다른 색상의 생명들을 불러내는 것조차 할 수 있을 것만 같습니다. 또는 완전히 이 세상에서 사라지게 할 수도 있겠지요.
+		</p>
+		</div>
+	</div>
+	<!--NEW-->
+	<div class="modal">
+		<div class="modal-content">
+		<span class="close">&times;</span>
+		<img src="b_i1.gif">
+		<h2>기초코스(1)_돌입</h2>
+		<p>『국제표준 수면단계 측정법International standard sleep level measurement method』에 따른 <자각몽 자격 제도>의 LD1급&2급 준비 단계의 수업입니다. <br><br>
+		해당 코스를 수료하고 나면, ✶자각몽을 꾸지 못하는 당신도 자각몽을 꿀 수 있습니다. ✶타인의 자각몽을 이해할 수 있습니다. ✶효율적인 노동 환경을 스스로 조절할 수 있습니다.<br><br>
+
+		LD1급&2급 준비 단계는 기초코스(1)&(2)로 구성되어 있으며, 순서대로 수강할 것을 권장하고 있습니다.
+		</p>
+		</div>
+	</div>
+	<div class="modal">
+		<div class="modal-content">
+		<span class="close">&times;</span>
+		<img src="b_i2.gif">
+		<h2>기초코스(2)_반복</h2>
+		<p>『국제표준 수면단계 측정법International standard sleep level measurement method』에 따른 <자각몽 자격 제도>의 LD1급&2급 준비 단계의 수업입니다. <br><br>
+
+		해당 코스를 수료하고 나면,<br>
+		✶자각몽을 자유롭게 꿀 수 있습니다. ✶자각몽의 주기와 등장인물, 배경 등을 조절할 수 있습니다. ✶현실에서, 타인의 자각몽에 영향을 주는 방법을 알게 됩니다. ✶자각몽 내 타의식으로의 이동이 가능해집니다.<br><br>
+
+		LD1급&2급 준비 단계는 기초코스(1)&(2)로 구성되어 있으며, 순서대로 수강할 것을 권장하고 있습니다.
+		</p>
+		</div>
+	</div>
+	<div class="modal">
+		<div class="modal-content">
+		<span class="close">&times;</span>
+		<img src="b_i3.gif">
+		<h2>중급코스_LD1급</h2>
+		<p>『국제표준 수면단계 측정법International standard sleep level measurement method』에 따른 <자각몽 자격 제도>의 LD1급 취득을 목적으로 하는 수업입니다.<br><br>
+
+		해당 코스를 수료하고 나면, ✶타인의 자각몽에 자유로이 돌입, 일정 정도의 영향을 미칠 수 있습니다. ✶자각몽의 내용을 조절할 수 있습니다. ✶자각몽 내 타의식으로의 이중 이동이 가능해집니다. ✶기초적인 자각몽을 제작할 수 있습니다.<br><br>
+
+		LD1급의 취득은 2075년 현재 당신에게 다음과 같은 이점을 제공합니다.<br>
+		✶<자각몽 자격 제도>의 세부 자격증(H1~H5급) 취득 시험에 응시할 수 있습니다.
+		</p>
+		</div>
+	</div>
+	<div class="modal">
+		<div class="modal-content">
+		<span class="close">&times;</span>
+		<img src="b_i4.gif">
+		<h2>고급코스_LD2급</h2>
+		<p>『국제표준 수면단계 측정법International standard sleep level measurement method』에 따른 <자각몽 자격 제도>의 LD2급 취득을 목적으로 하는 수업입니다.<br><br>
+
+		해당 코스를 수료하고 나면, ✶타인의 자각몽에 자유로이 돌입, 완전한 영향력을 행사할 수 있습니다. ✶자각몽의 내용을 처음부터 구성할 수 있습니다. ✶자각몽 내 이동에 제한이 없습니다. ✶복잡한 내용의 자각몽을 제작할 수 있습니다. ✶자각몽을 통해 타인의 현실에 일정 정도의 영향을 미칠 수 있습니다.<br><br>
+
+		LD2급의 취득은 2075년 현재 당신에게 다음과 같은 이점을 제공합니다.<br>
+		✶<자각몽 자격 제도>의 세부 자격증(H1~H5급, M1~M5급, P1~P5급 등) 취득 시험에 응시할 수 있습니다.
+		</p>
+		</div>
+	</div>
+	 <!-- copy same items -->
+	<div class="modal">
+		<div class="modal-content">
+		<span class="close">&times;</span>
+		<img src="b_i1.gif">
+		<h2>기초코스(1)_돌입</h2>
+		<p>『국제표준 수면단계 측정법International standard sleep level measurement method』에 따른 <자각몽 자격 제도>의 LD1급&2급 준비 단계의 수업입니다. <br><br>
+		해당 코스를 수료하고 나면, ✶자각몽을 꾸지 못하는 당신도 자각몽을 꿀 수 있습니다. ✶타인의 자각몽을 이해할 수 있습니다. ✶효율적인 노동 환경을 스스로 조절할 수 있습니다.<br><br>
+
+		LD1급&2급 준비 단계는 기초코스(1)&(2)로 구성되어 있으며, 순서대로 수강할 것을 권장하고 있습니다.
+		</p>
+		</div>
+	</div>
+	<div class="modal">
+		<div class="modal-content">
+		<span class="close">&times;</span>
+		<img src="b_i2.gif">
+		<h2>기초코스(2)_반복</h2>
+		<p>『국제표준 수면단계 측정법International standard sleep level measurement method』에 따른 <자각몽 자격 제도>의 LD1급&2급 준비 단계의 수업입니다. <br><br>
+
+		해당 코스를 수료하고 나면,<br>
+		✶자각몽을 자유롭게 꿀 수 있습니다. ✶자각몽의 주기와 등장인물, 배경 등을 조절할 수 있습니다. ✶현실에서, 타인의 자각몽에 영향을 주는 방법을 알게 됩니다. ✶자각몽 내 타의식으로의 이동이 가능해집니다.<br><br>
+
+		LD1급&2급 준비 단계는 기초코스(1)&(2)로 구성되어 있으며, 순서대로 수강할 것을 권장하고 있습니다.
+		</p>
+		</div>
+	</div>
+	<div class="modal">
+		<div class="modal-content">
+		<span class="close">&times;</span>
+		<img src="b_i3.gif">
+		<h2>중급코스_LD1급</h2>
+		<p>『국제표준 수면단계 측정법International standard sleep level measurement method』에 따른 <자각몽 자격 제도>의 LD1급 취득을 목적으로 하는 수업입니다.<br><br>
+
+		해당 코스를 수료하고 나면, ✶타인의 자각몽에 자유로이 돌입, 일정 정도의 영향을 미칠 수 있습니다. ✶자각몽의 내용을 조절할 수 있습니다. ✶자각몽 내 타의식으로의 이중 이동이 가능해집니다. ✶기초적인 자각몽을 제작할 수 있습니다.<br><br>
+
+		LD1급의 취득은 2075년 현재 당신에게 다음과 같은 이점을 제공합니다.<br>
+		✶<자각몽 자격 제도>의 세부 자격증(H1~H5급) 취득 시험에 응시할 수 있습니다.
+		</p>
+		</div>
+	</div>
+	<div class="modal">
+		<div class="modal-content">
+		<span class="close">&times;</span>
+		<img src="b_i4.gif">
+		<h2>고급코스_LD2급</h2>
+		<p>『국제표준 수면단계 측정법International standard sleep level measurement method』에 따른 <자각몽 자격 제도>의 LD2급 취득을 목적으로 하는 수업입니다.<br><br>
+
+		해당 코스를 수료하고 나면, ✶타인의 자각몽에 자유로이 돌입, 완전한 영향력을 행사할 수 있습니다. ✶자각몽의 내용을 처음부터 구성할 수 있습니다. ✶자각몽 내 이동에 제한이 없습니다. ✶복잡한 내용의 자각몽을 제작할 수 있습니다. ✶자각몽을 통해 타인의 현실에 일정 정도의 영향을 미칠 수 있습니다.<br><br>
+
+		LD2급의 취득은 2075년 현재 당신에게 다음과 같은 이점을 제공합니다.<br>
+		✶<자각몽 자격 제도>의 세부 자격증(H1~H5급, M1~M5급, P1~P5급 등) 취득 시험에 응시할 수 있습니다.
+		</p>
+		</div>
+	</div>
+	<!--뉴 원~~~~~~~-->
+	<div class="modal">
+		<div class="modal-content">
+		<span class="close">&times;</span>
+		<img src="c_i1.gif">
+		<h2>환상재</h2>
+		<p>본 제품은 <자각몽에 관련된 특별법> 제3조에 의거해 정부로부터 허가받은 수면보조재입니다. <br><br>자각몽의 환상감을 증폭시키는 보조재입니다. 두뇌 피질칩에 장착해 사용하거나 신경 중추와 연결해 사용해주십시오. 
+		</p>
+		</div>
+	</div>
+	<div class="modal">
+		<div class="modal-content">
+		<span class="close">&times;</span>
+		<img src="c_i2.gif">
+		<h2>효율재</h2>
+		<p>본 제품은 <자각몽에 관련된 특별법> 제3조에 의거해 정부로부터 허가받은 수면보조재입니다. <br><br>수면 중 노동 효율을 최대 20%p 증가시키는 보조재입니다. 두뇌 피질칩에 장착해 사용해주십시오. <br><br>최근 한국미래포럼 제작 자각몽 보조재로 적용 시 자각몽의 지속 시간이 매우 짧아지는 사례가 발생하고 있으나 인체에 무해하며, 구매 전 고려해주시길 바랍니다.
+		</p>
+		</div>
+	</div>
+	<div class="modal">
+		<div class="modal-content">
+		<span class="close">&times;</span>
+		<img src="c_i3.gif">
+		<h2>스펙트럼재</h2>
+		<p>본 제품은 <자각몽에 관련된 특별법> 제3조에 의거해 정부로부터 허가받은 수면보조재입니다. <br><br>수면 중 색상의 상실을 경험할 경우 회복시키는 보조재입니다. 각 안구 당 1개 씩 착용해 사용해주십시오.<br><br>사용 후에도 지속적인 색상의 상실을 경험하거나, 현실에서 색상의 상실을 경험할 경우 전문가와의 상담을 받으시길 바랍니다.
+		</p>
+		</div>
+	</div>
+	<div class="modal">
+		<div class="modal-content">
+		<span class="close">&times;</span>
+		<img src="c_i4.gif">
+		<h2>증폭재</h2>
+		<p>본 제품은 임상 실험 단계의 제품입니다. 반드시 전문가와의 상의 후 처방전과 함께 구매하시길 바랍니다. 본 제품을 적용한 이후 발생한 문제와 제품 간의 인과성에 대한 조사의 책임은 소비자 및 처방전 작성자에게 있습니다. <br><br>자각몽의 환상감과 수면 중 노동 효율을 모두 30%p 증가시키는 보조재입니다. 우심실과 좌심방에 한 번씩 접촉한 뒤 폐에 장착해 사용해주십시오.<br><br>현재 해당 제품을 사용한 후 발생한 증상은 다음과 같습니다. ✶청력이 23% 감소. ✶신장 최대 12% 축소. ✶심장 박동 속도 최대 2% 증가. ✶자각몽 지속 시간 74% 증가. ✶호흡량 13% 증가.
+		</p>
+		</div>
+	</div>
+	<!--반복하자-->
+	<div class="modal">
+		<div class="modal-content">
+		<span class="close">&times;</span>
+		<img src="c_i1.gif">
+		<h2>환상재</h2>
+		<p>본 제품은 <자각몽에 관련된 특별법> 제3조에 의거해 정부로부터 허가받은 수면보조재입니다. <br><br>자각몽의 환상감을 증폭시키는 보조재입니다. 두뇌 피질칩에 장착해 사용하거나 신경 중추와 연결해 사용해주십시오. 
+		</p>
+		</div>
+	</div>
+	<div class="modal">
+		<div class="modal-content">
+		<span class="close">&times;</span>
+		<img src="c_i2.gif">
+		<h2>효율재</h2>
+		<p>본 제품은 <자각몽에 관련된 특별법> 제3조에 의거해 정부로부터 허가받은 수면보조재입니다. <br><br>수면 중 노동 효율을 최대 20%p 증가시키는 보조재입니다. 두뇌 피질칩에 장착해 사용해주십시오. <br><br>최근 한국미래포럼 제작 자각몽 보조재로 적용 시 자각몽의 지속 시간이 매우 짧아지는 사례가 발생하고 있으나 인체에 무해하며, 구매 전 고려해주시길 바랍니다.
+		</p>
+		</div>
+	</div>
+	<div class="modal">
+		<div class="modal-content">
+		<span class="close">&times;</span>
+		<img src="c_i3.gif">
+		<h2>스펙트럼재</h2>
+		<p>본 제품은 <자각몽에 관련된 특별법> 제3조에 의거해 정부로부터 허가받은 수면보조재입니다. <br><br>수면 중 색상의 상실을 경험할 경우 회복시키는 보조재입니다. 각 안구 당 1개 씩 착용해 사용해주십시오.<br><br>사용 후에도 지속적인 색상의 상실을 경험하거나, 현실에서 색상의 상실을 경험할 경우 전문가와의 상담을 받으시길 바랍니다.
+		</p>
+		</div>
+	</div>
+	<div class="modal">
+		<div class="modal-content">
+		<span class="close">&times;</span>
+		<img src="c_i4.gif">
+		<h2>증폭재</h2>
+		<p>본 제품은 임상 실험 단계의 제품입니다. 반드시 전문가와의 상의 후 처방전과 함께 구매하시길 바랍니다. 본 제품을 적용한 이후 발생한 문제와 제품 간의 인과성에 대한 조사의 책임은 소비자 및 처방전 작성자에게 있습니다. <br><br>자각몽의 환상감과 수면 중 노동 효율을 모두 30%p 증가시키는 보조재입니다. 우심실과 좌심방에 한 번씩 접촉한 뒤 폐에 장착해 사용해주십시오.<br><br>현재 해당 제품을 사용한 후 발생한 증상은 다음과 같습니다. ✶청력이 23% 감소. ✶신장 최대 12% 축소. ✶심장 박동 속도 최대 2% 증가. ✶자각몽 지속 시간 74% 증가. ✶호흡량 13% 증가.
+		</p>
+		</div>
+	</div>
+	<header><h1>sleepWELL</h1></header>
+
+
+	<section class="section0">
 	<section class="section1">
+		
 		<div class="box">
 			<div class="item">
-				<img src="dummy_static.png" alt="" data-animated="dummy_animate.gif" data-static="dummy_static.png" class="hov-anim">
+			<img src="a_i1.png" alt="" data-animated="a_i1.gif" data-static="a_i1.png" class="hov-anim">
 			</div>
 			<div class="name">
-				<p>상품명</p>
-				<p>상품설명</p>
+			<p>꿈_0218 (행성)</p>
+			<p>3400d</p>
 			</div>
 		</div>
 		<div class="box">
 			<div class="item">
-				<img src="dummy2_static.png" alt="" data-animated="dummy2_animate.gif" data-static="dummy2_static.png" class="hov-anim">
+			<img src="a_i2.png" alt="" data-animated="a_i2.gif" data-static="a_i2.png" class="hov-anim">
 			</div>
 			<div class="name">
-				<p>상품명</p>
-				<p>상품설명</p>
+			<p>꿈_#[*& (고래)</p>
+			<p>3900d</p>
 			</div>
 		</div>
 		<div class="box">
 			<div class="item">
-				<img src="dummy3_static.png" alt="" data-animated="dummy3_animate.gif" data-static="dummy3_static.png" class="hov-anim">
+			<img src="a_i3.png" alt="" data-animated="a_i3.gif" data-static="a_i3.png" class="hov-anim">
 			</div>
 			<div class="name">
-				<p>상품명</p>
-				<p>상품설명</p>
+			<p>꿈_7777 (금전)</p>
+			<p>6900d</p>
 			</div>
 		</div>
 		<div class="box">
 			<div class="item">
-				<img src="dummy4_static.png" alt="" data-animated="dummy4_animate.gif" data-static="dummy4_static.png" class="hov-anim">
+			<img src="a_i4.png" alt="" data-animated="a_i4.gif" data-static="a_i4.png" class="hov-anim">
 			</div>
 			<div class="name">
-				<p>상품명</p>
-				<p>상품설명</p>
+			<p>꿈_sakr (꽃놀이)</p>
+			<p>9900d</p>
+			</div>
+		</div>
+		 <!-- copy same items -->
+		<div class="box">
+			<div class="item">
+			<img src="a_i1.png" alt="" data-animated="a_i1.gif" data-static="a_i1.png" class="hov-anim">
+			</div>
+			<div class="name">
+			<p>꿈_0218 (행성)</p>
+			<p>3400d</p>
+			</div>
+		</div>
+		<div class="box">
+			<div class="item">
+			<img src="a_i2.png" alt="" data-animated="a_i2.gif" data-static="a_i2.png" class="hov-anim">
+			</div>
+			<div class="name">
+			<p>꿈_#[*& (고래)</p>
+			<p>3900d</p>
+			</div>
+		</div>
+		<div class="box">
+			<div class="item">
+			<img src="a_i3.png" alt="" data-animated="a_i3.gif" data-static="a_i3.png" class="hov-anim">
+			</div>
+			<div class="name">
+			<p>꿈_7777 (금전)</p>
+			<p>6900d</p>
+			</div>
+		</div>
+		<div class="box">
+			<div class="item">
+			<img src="a_i4.png" alt="" data-animated="a_i4.gif" data-static="a_i4.png" class="hov-anim">
+			</div>
+			<div class="name">
+			<p>꿈_sakr (꽃놀이)</p>
+			<p>9900d</p>
 			</div>
 		</div>
 	</section>
+	</section>
+
+
+	<section class="section0">
 	<section class="section1">
+		
 		<div class="box">
 			<div class="item">
-				<img src="dummy_static.png" alt="" data-animated="dummy_animate.gif" data-static="dummy_static.png" class="hov-anim">
+			<img src="b_i1.png" alt="" data-animated="b_i1.gif" data-static="b_i1.png" class="hov-anim">
 			</div>
 			<div class="name">
-				<p>상품명</p>
-				<p>상품설명</p>
+			<p>기초코스(1)_돌입</p>
+			<p>5000d</p>
 			</div>
 		</div>
 		<div class="box">
 			<div class="item">
-				<img src="dummy2_static.png" alt="" data-animated="dummy2_animate.gif" data-static="dummy2_static.png" class="hov-anim">
+			<img src="b_i2.png" alt="" data-animated="b_i2.gif" data-static="b_i2.png" class="hov-anim">
 			</div>
 			<div class="name">
-				<p>상품명</p>
-				<p>상품설명</p>
+			<p>기초코스(2)_반복</p>
+			<p>7000d</p>
 			</div>
 		</div>
 		<div class="box">
 			<div class="item">
-				<img src="dummy3_static.png" alt="" data-animated="dummy3_animate.gif" data-static="dummy3_static.png" class="hov-anim">
+			<img src="b_i3.png" alt="" data-animated="b_i3.gif" data-static="b_i3.png" class="hov-anim">
 			</div>
 			<div class="name">
-				<p>상품명</p>
-				<p>상품설명</p>
+			<p>중급코스_LD1급</p>
+			<p>20000d (응시료 별도)</p>
 			</div>
 		</div>
 		<div class="box">
 			<div class="item">
-				<img src="dummy4_static.png" alt="" data-animated="dummy4_animate.gif" data-static="dummy4_static.png" class="hov-anim">
+			<img src="b_i4.png" alt="" data-animated="b_i4.gif" data-static="b_i4.png" class="hov-anim">
 			</div>
 			<div class="name">
-				<p>상품명</p>
-				<p>상품설명</p>
+			<p>고급코스_LD2급</p>
+			<p>50000d (응시료 별도)</p>
+			</div>
+		</div>
+		 <!-- copy same items -->
+		<div class="box">
+			<div class="item">
+			<img src="b_i1.png" alt="" data-animated="b_i1.gif" data-static="b_i1.png" class="hov-anim">
+			</div>
+			<div class="name">
+			<p>기초코스(1)_돌입</p>
+			<p>5000d</p>
+			</div>
+		</div>
+		<div class="box">
+			<div class="item">
+			<img src="b_i2.png" alt="" data-animated="b_i2.gif" data-static="b_i2.png" class="hov-anim">
+			</div>
+			<div class="name">
+			<p>기초코스(2)_반복</p>
+			<p>7000d</p>
+			</div>
+		</div>
+		<div class="box">
+			<div class="item">
+			<img src="b_i3.png" alt="" data-animated="b_i3.gif" data-static="b_i3.png" class="hov-anim">
+			</div>
+			<div class="name">
+			<p>중급코스_LD1급</p>
+			<p>20000d (응시료 별도)</p>
+			</div>
+		</div>
+		<div class="box">
+			<div class="item">
+			<img src="b_i4.png" alt="" data-animated="b_i4.gif" data-static="b_i4.png" class="hov-anim">
+			</div>
+			<div class="name">
+			<p>고급코스_LD2급</p>
+			<p>50000d (응시료 별도)</p>
 			</div>
 		</div>
 	</section>
+	</section>
+
+
+	<section class="section0">
 	<section class="section1">
 		<div class="box">
 			<div class="item">
-				<img src="dummy_static.png" alt="" data-animated="dummy_animate.gif" data-static="dummy_static.png" class="hov-anim">
+			<img src="c_i1.png" alt="" data-animated="c_i1.gif" data-static="c_i1.png" class="hov-anim">
 			</div>
 			<div class="name">
-				<p>상품명</p>
-				<p>상품설명</p>
+			<p>환상재</p>
+			<p>500d</p>
 			</div>
 		</div>
 		<div class="box">
 			<div class="item">
-				<img src="dummy2_static.png" alt="" data-animated="dummy2_animate.gif" data-static="dummy2_static.png" class="hov-anim">
+			<img src="c_i2.png" alt="" data-animated="c_i2.gif" data-static="c_i2.png" class="hov-anim">
 			</div>
 			<div class="name">
-				<p>상품명</p>
-				<p>상품설명</p>
+			<p>효율재</p>
+			<p>2000d</p>
 			</div>
 		</div>
 		<div class="box">
 			<div class="item">
-				<img src="dummy3_static.png" alt="" data-animated="dummy3_animate.gif" data-static="dummy3_static.png" class="hov-anim">
+			<img src="c_i3.png" alt="" data-animated="c_i3.gif" data-static="c_i3.png" class="hov-anim">
 			</div>
 			<div class="name">
-				<p>상품명</p>
-				<p>상품설명</p>
+			<p>스펙트럼재</p>
+			<p>100d</p>
 			</div>
 		</div>
 		<div class="box">
 			<div class="item">
-				<img src="dummy4_static.png" alt="" data-animated="dummy4_animate.gif" data-static="dummy4_static.png" class="hov-anim">
+			<img src="c_i4.png" alt="" data-animated="c_i4.gif" data-static="c_i4.png" class="hov-anim">
 			</div>
 			<div class="name">
-				<p>상품명</p>
-				<p>상품설명</p>
+			<p>증폭재</p>
+			<p>40000d</p>
+			</div>
+		</div>
+		<!--반복하십시오-->
+		<div class="box">
+			<div class="item">
+			<img src="c_i1.png" alt="" data-animated="c_i1.gif" data-static="c_i1.png" class="hov-anim">
+			</div>
+			<div class="name">
+			<p>환상재</p>
+			<p>500d</p>
+			</div>
+		</div>
+		<div class="box">
+			<div class="item">
+			<img src="c_i2.png" alt="" data-animated="c_i2.gif" data-static="c_i2.png" class="hov-anim">
+			</div>
+			<div class="name">
+			<p>효율재</p>
+			<p>2000d</p>
+			</div>
+		</div>
+		<div class="box">
+			<div class="item">
+			<img src="c_i3.png" alt="" data-animated="c_i3.gif" data-static="c_i3.png" class="hov-anim">
+			</div>
+			<div class="name">
+			<p>스펙트럼재</p>
+			<p>100d</p>
+			</div>
+		</div>
+		<div class="box">
+			<div class="item">
+			<img src="c_i4.png" alt="" data-animated="c_i4.gif" data-static="c_i4.png" class="hov-anim">
+			</div>
+			<div class="name">
+			<p>증폭재</p>
+			<p>40000d</p>
 			</div>
 		</div>
 	</section>
+	</section>
+
+
 	<section class="section2">
-		<div>
-			<p class="intro_p">어쩌구저쩌구</p>
-			<p>이 회사가 어케 세워졌고<br>이러쿵저러쿵<br>텍스트를이것저것<br>깔끔하지만 상세하게<br>써봅시다</p>
+		<div class="intro">
+			<p class="intro_p">'효율적인' 수면을 위하여</p>
+			<p>자각몽을 통해, 여러분의 신체를 통제하십시오.</p>
+			<p>「수면 중 무의식의 의식적 통제」 및 「후속 연구: 질병코드 G47(F51.3)의 효과적 이용」을 발표했던 건곤대학교 인간경제대학원 연구소와 한국미래포럼이 손을 잡고, 국민의 효율적인 수면 활동을 위해 ‘LDfY: Lucid Dream for You’를 설립했습니다.<br><br>LDfY는 2035년부터 지금까지, 40년간 협업해온 각지의 수면분석 전문가들의 연구의 산물을 여러분께 합리적인 가격으로 제공하고 있습니다. 저희는 여러분의 달콤한, 동시에 효율적인 자각몽의 경험을 설계하기 위해 끊임 없는 연구를 지속하고 있습니다.<br><br>주요협력업체✶DG 꿈 백화점✶MVIDIA✶LUCinsurance
+
 		</div>
 	</section>
 	<section class="section3" id="back1"></section>
 	<section class="section3" id="back2"></section>
 	<section class="section3" id="back3">
-		<p class="footer">sleepWELL</p>
+		<div class="footer_bg">
+			<p class="footer1 foot_l">We all hope you have a efficient dream</p>
+			<p class="footer2">sleepWELL</p>
+			<p class="footer1 foot_r">LDfY<br>&copy;kim_s__m</p>
+		</div>
 	</section>
 	<script>
 		$(".hov-anim").mouseover(function() {
-  $(this).attr("src", $(this).data("animated"))
-}),
-$(".hov-anim").mouseout(function() {
-  $(this).attr("src", $(this).data("static"))
-});
+  		$(this).attr("src", $(this).data("animated"))
+			}),
+		$(".hov-anim").mouseout(function() {
+ 		$(this).attr("src", $(this).data("static"))
+			});
 
+		var modals = document.getElementsByClassName('modal');
+		var btns = document.getElementsByClassName('box');
+		var spanes = document.getElementsByClassName('close');
+		var funcs = [];
+
+		function Modal(num){
+		return function(){
+		btns[num].onclick =  function() {
+        modals[num].style.display = "block";
+        console.log(num);
+    		};
+		spanes[num].onclick = function() {
+        modals[num].style.display = "none";
+   				 };
+  				};
+				}
+		for(var i = 0; i < btns.length; i++) {
+  		funcs[i] = Modal(i);
+		}
+		for(var j = 0; j < btns.length; j++) {
+ 		 funcs[j]();
+		}
+		window.onclick = function(event) {
+ 		 if (event.target.className == "modal") {
+  	    event.target.style.display = "none";
+		  }
+		};
 	</script>
 </body>
 </html>
