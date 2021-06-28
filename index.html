@@ -4,11 +4,19 @@
 	<title></title>
 	<meta charset="utf-8">
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-	<link rel="preconnect" href="https://fonts.gstatic.com"> 
-	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;700&display=swap" rel="stylesheet">
+
 	<style type="text/css">
-		@import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@1,600&display=swap');
-		body{margin:0;font-family: 'Apple SD Gothic Neo','Noto Sans KR',sans-serif,'Malgun Gothic',arial,sans-serif;}
+	@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@1,100&family=Noto+Sans+KR:wght@100;300;500&family=Viaoda+Libre&display=swap');
+	@font-face {font-family: 'Fraunces'; src: url(Fraunces_144pt-ThinItalic.ttf) format('truetype'); }
+		body{font-family:'Noto Sans KR' ; font-weight: 100;margin: 0;}
+		h1{width: 100%;text-align: center;font-size: 10em;  position: fixed;top: 20px; z-index: -5;line-height: 0;font-family: 'Fraunces', serif; font-weight: 100;}
+		.target {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+.target::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
 		.section0{
 			width: 100%; overflow: hidden;
 		}
@@ -27,7 +35,7 @@
 		.section1:hover{
 			animation-play-state: paused;
 		}
-		.section2{width: 100%; height: 1500px; margin-top: 500px;background-color: white;position: sticky; top: 300px; z-index: -3;}
+		.section2{width: 100%; height: 2000px; margin-top: 500px;background-color: white;position: sticky; top: 300px; z-index: -3;}
 		.section3{width: 100%; height: 100vh; background-position: center;background-size: cover; background-attachment: fixed; z-index: -2; position: relative;}
 		#back1{background-image: url(https://media.giphy.com/media/juTxjjZW0HCWQ/giphy.gif)}
 		#back2{background-image: url(https://media.giphy.com/media/L3oBL5FcCw2aRgvYLb/giphy.gif);}
@@ -48,8 +56,7 @@
 		.intro_p{font-weight: bold;}
 		.product_n{}
 		.product_dis{}
-		header{height: 300px; width: 100%;}
-		h1{width: 100%;text-align: center;font-size: 10em;  position: fixed;top: 10px; z-index: -5;line-height: 0; font-family:'Alegreya';}
+		header{height: 300px; width: 100%;font-family: 'Alegreya', serif;}
 		img{width: 100%;}
 		.footer_bg{width: 100%; height: 800px;
 			background:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.5));
@@ -57,17 +64,19 @@
 			bottom: 0;
 			display: flex;
 			justify-content: space-between;
-			align-items: flex-end;}
+			align-items: flex-end;
+			}
 		.footer1{
 			color: white;
 			font-size: 1em;
 			width: 200px;}
 		.footer2{
+			font-family: 'Fraunces';
 			color: white; 
 			font-size: 3em; 
 			font-weight: bold; }
-		.foot_l{text-align: left;}
-		.foot_r{text-align: right;}
+		.foot_l{text-align: left; padding-left: 10px;}
+		.foot_r{text-align: right;padding-right: 10px;}
 		.modal{
 			display: none;
 			position: fixed;
@@ -110,10 +119,10 @@
 			0% {transform: translateX(0);}
 			100% {transform: translateX(calc(-400px * 4));}
 			}
-
+		.thumb_title{font-weight: 500;}
 	</style>
 </head>
-<body>
+<body class="target">
 	<div class="modal">
 		<div class="modal-content">
 		<span class="close">&times;</span>
@@ -406,7 +415,7 @@
 			<img src="a_i1.png" alt="" data-animated="a_i1.gif" data-static="a_i1.png" class="hov-anim">
 			</div>
 			<div class="name">
-			<p>꿈_0218 (행성)</p>
+			<p class="thumb_title">꿈_0218 (행성)</p>
 			<p>3400d</p>
 			</div>
 		</div>
@@ -415,7 +424,7 @@
 			<img src="a_i2.png" alt="" data-animated="a_i2.gif" data-static="a_i2.png" class="hov-anim">
 			</div>
 			<div class="name">
-			<p>꿈_#[*& (고래)</p>
+			<p class="thumb_title">꿈_#[*& (고래)</p>
 			<p>3900d</p>
 			</div>
 		</div>
@@ -424,7 +433,7 @@
 			<img src="a_i3.png" alt="" data-animated="a_i3.gif" data-static="a_i3.png" class="hov-anim">
 			</div>
 			<div class="name">
-			<p>꿈_7777 (금전)</p>
+			<p class="thumb_title">꿈_7777 (금전)</p>
 			<p>6900d</p>
 			</div>
 		</div>
@@ -433,7 +442,7 @@
 			<img src="a_i4.png" alt="" data-animated="a_i4.gif" data-static="a_i4.png" class="hov-anim">
 			</div>
 			<div class="name">
-			<p>꿈_sakr (꽃놀이)</p>
+			<p class="thumb_title">꿈_sakr (꽃놀이)</p>
 			<p>9900d</p>
 			</div>
 		</div>
@@ -443,7 +452,7 @@
 			<img src="a_i1.png" alt="" data-animated="a_i1.gif" data-static="a_i1.png" class="hov-anim">
 			</div>
 			<div class="name">
-			<p>꿈_0218 (행성)</p>
+			<p class="thumb_title">꿈_0218 (행성)</p>
 			<p>3400d</p>
 			</div>
 		</div>
@@ -452,7 +461,7 @@
 			<img src="a_i2.png" alt="" data-animated="a_i2.gif" data-static="a_i2.png" class="hov-anim">
 			</div>
 			<div class="name">
-			<p>꿈_#[*& (고래)</p>
+			<p class="thumb_title">꿈_#[*& (고래)</p>
 			<p>3900d</p>
 			</div>
 		</div>
@@ -461,7 +470,7 @@
 			<img src="a_i3.png" alt="" data-animated="a_i3.gif" data-static="a_i3.png" class="hov-anim">
 			</div>
 			<div class="name">
-			<p>꿈_7777 (금전)</p>
+			<p class="thumb_title">꿈_7777 (금전)</p>
 			<p>6900d</p>
 			</div>
 		</div>
@@ -470,7 +479,7 @@
 			<img src="a_i4.png" alt="" data-animated="a_i4.gif" data-static="a_i4.png" class="hov-anim">
 			</div>
 			<div class="name">
-			<p>꿈_sakr (꽃놀이)</p>
+			<p class="thumb_title">꿈_sakr (꽃놀이)</p>
 			<p>9900d</p>
 			</div>
 		</div>
@@ -486,7 +495,7 @@
 			<img src="b_i1.png" alt="" data-animated="b_i1.gif" data-static="b_i1.png" class="hov-anim">
 			</div>
 			<div class="name">
-			<p>기초코스(1)_돌입</p>
+			<p class="thumb_title">기초코스(1)_돌입</p>
 			<p>5000d</p>
 			</div>
 		</div>
@@ -495,7 +504,7 @@
 			<img src="b_i2.png" alt="" data-animated="b_i2.gif" data-static="b_i2.png" class="hov-anim">
 			</div>
 			<div class="name">
-			<p>기초코스(2)_반복</p>
+			<p class="thumb_title">기초코스(2)_반복</p>
 			<p>7000d</p>
 			</div>
 		</div>
@@ -504,7 +513,7 @@
 			<img src="b_i3.png" alt="" data-animated="b_i3.gif" data-static="b_i3.png" class="hov-anim">
 			</div>
 			<div class="name">
-			<p>중급코스_LD1급</p>
+			<p class="thumb_title">중급코스_LD1급</p>
 			<p>20000d (응시료 별도)</p>
 			</div>
 		</div>
@@ -513,7 +522,7 @@
 			<img src="b_i4.png" alt="" data-animated="b_i4.gif" data-static="b_i4.png" class="hov-anim">
 			</div>
 			<div class="name">
-			<p>고급코스_LD2급</p>
+			<p class="thumb_title">고급코스_LD2급</p>
 			<p>50000d (응시료 별도)</p>
 			</div>
 		</div>
@@ -523,7 +532,7 @@
 			<img src="b_i1.png" alt="" data-animated="b_i1.gif" data-static="b_i1.png" class="hov-anim">
 			</div>
 			<div class="name">
-			<p>기초코스(1)_돌입</p>
+			<p class="thumb_title">기초코스(1)_돌입</p>
 			<p>5000d</p>
 			</div>
 		</div>
@@ -532,7 +541,7 @@
 			<img src="b_i2.png" alt="" data-animated="b_i2.gif" data-static="b_i2.png" class="hov-anim">
 			</div>
 			<div class="name">
-			<p>기초코스(2)_반복</p>
+			<p class="thumb_title">기초코스(2)_반복</p>
 			<p>7000d</p>
 			</div>
 		</div>
@@ -541,7 +550,7 @@
 			<img src="b_i3.png" alt="" data-animated="b_i3.gif" data-static="b_i3.png" class="hov-anim">
 			</div>
 			<div class="name">
-			<p>중급코스_LD1급</p>
+			<p class="thumb_title">중급코스_LD1급</p>
 			<p>20000d (응시료 별도)</p>
 			</div>
 		</div>
@@ -550,7 +559,7 @@
 			<img src="b_i4.png" alt="" data-animated="b_i4.gif" data-static="b_i4.png" class="hov-anim">
 			</div>
 			<div class="name">
-			<p>고급코스_LD2급</p>
+			<p class="thumb_title">고급코스_LD2급</p>
 			<p>50000d (응시료 별도)</p>
 			</div>
 		</div>
@@ -565,7 +574,7 @@
 			<img src="c_i1.png" alt="" data-animated="c_i1.gif" data-static="c_i1.png" class="hov-anim">
 			</div>
 			<div class="name">
-			<p>환상재</p>
+			<p class="thumb_title">환상재</p>
 			<p>500d</p>
 			</div>
 		</div>
@@ -574,7 +583,7 @@
 			<img src="c_i2.png" alt="" data-animated="c_i2.gif" data-static="c_i2.png" class="hov-anim">
 			</div>
 			<div class="name">
-			<p>효율재</p>
+			<p class="thumb_title">효율재</p>
 			<p>2000d</p>
 			</div>
 		</div>
@@ -583,7 +592,7 @@
 			<img src="c_i3.png" alt="" data-animated="c_i3.gif" data-static="c_i3.png" class="hov-anim">
 			</div>
 			<div class="name">
-			<p>스펙트럼재</p>
+			<p class="thumb_title">스펙트럼재</p>
 			<p>100d</p>
 			</div>
 		</div>
@@ -592,7 +601,7 @@
 			<img src="c_i4.png" alt="" data-animated="c_i4.gif" data-static="c_i4.png" class="hov-anim">
 			</div>
 			<div class="name">
-			<p>증폭재</p>
+			<p class="thumb_title">증폭재</p>
 			<p>40000d</p>
 			</div>
 		</div>
@@ -602,7 +611,7 @@
 			<img src="c_i1.png" alt="" data-animated="c_i1.gif" data-static="c_i1.png" class="hov-anim">
 			</div>
 			<div class="name">
-			<p>환상재</p>
+			<p class="thumb_title">환상재</p>
 			<p>500d</p>
 			</div>
 		</div>
@@ -611,7 +620,7 @@
 			<img src="c_i2.png" alt="" data-animated="c_i2.gif" data-static="c_i2.png" class="hov-anim">
 			</div>
 			<div class="name">
-			<p>효율재</p>
+			<p class="thumb_title">효율재</p>
 			<p>2000d</p>
 			</div>
 		</div>
@@ -620,7 +629,7 @@
 			<img src="c_i3.png" alt="" data-animated="c_i3.gif" data-static="c_i3.png" class="hov-anim">
 			</div>
 			<div class="name">
-			<p>스펙트럼재</p>
+			<p class="thumb_title">스펙트럼재</p>
 			<p>100d</p>
 			</div>
 		</div>
@@ -629,7 +638,7 @@
 			<img src="c_i4.png" alt="" data-animated="c_i4.gif" data-static="c_i4.png" class="hov-anim">
 			</div>
 			<div class="name">
-			<p>증폭재</p>
+			<p class="thumb_title">증폭재</p>
 			<p>40000d</p>
 			</div>
 		</div>
@@ -651,7 +660,7 @@
 		<div class="footer_bg">
 			<p class="footer1 foot_l">We all hope you have a efficient dream</p>
 			<p class="footer2">sleepWELL</p>
-			<p class="footer1 foot_r">LDfY<br>&copy;kim_s__m</p>
+			<p class="footer1 foot_r">LDfY<br>&copy;kim__s_m</p>
 		</div>
 	</section>
 	<script>
